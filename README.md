@@ -1,0 +1,2 @@
+# MLBBaseballSImulator
+simulates MLB games
