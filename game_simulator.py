@@ -116,7 +116,7 @@ class Game:
 #The simulate_at_bat function takes in the batter, pitcher, and game state as input and returns the
 #outcome of the at-bat. In this example, we'll use a simple probability model based on the batter's
 #on-base percentage (OBP) to determine the outcome
-    def simulate_at_bat(batter, pitcher, game_state):
+def simulate_at_bat(batter, pitcher, game_state):
         """
     Simulates a single at-bat between a batter and a pitcher, returning the outcome as a string.
     
@@ -134,11 +134,11 @@ class Game:
             # Batter reaches base
             return "hit"
         else:
-            # Batter is out
-            return "out"
+                # Batter is out
+                return "out"
 #The simulate_half_inning function simulates one half-inning (top or bottom) by repeatedly calling the
 #simulate_at_bat function until three outs are recorded.
-    def simulate_half_inning(team, opposing_pitcher, game_state):
+def simulate_half_inning(team, opposing_pitcher, game_state):
         """
     Simulates a half-inning for a team, updating the game state with the number of runs scored.
     
@@ -163,7 +163,7 @@ class Game:
 
 #The simulate_game function simulates the full game by calling the simulate_half_inning function for each
 #half-inning until the game is over.
-    def simulate_game(home_team, away_team):
+def simulate_game(home_team, away_team):
         """
     Simulates a full baseball game between two teams, printing the winner and final score at the end.
     
@@ -181,14 +181,14 @@ class Game:
                 simulate_half_inning(home_team, away_team.pitcher, game_state)
 
         game_state.switch_half_inning()
-
+        
         winner = game_state.get_winner()
         print(f"The winner is {winner} with a score of {game_state.home_score}-{game_state.away_score}")
-
+        
 #The get_user_input function can be created to gather user input for team names, player names, and statistics.
 #You can then use the pybaseball library to fetch the player and pitcher statistics for the given names.
 
-    def get_user_input():
+def get_user_input():
         """
     Gathers user input for team names, player names, and starting pitcher names, creating Team objects.
     
@@ -198,27 +198,27 @@ class Game:
     
         home_team_name = input("Enter the home team name: ")
         away_team_name = input("Enter the away team name: ")
-
+        
         home_lineup = []
         away_lineup = []
-
+        
         for i in range(1, 10):
             player_name = input(f"Enter the home team player {i} name: ")
             player_data = get_player_batting_stats(player_name)
             if player_data:
                 player = Player(player_data["Name"], player_data["AVG"], player_data["OBP"], player_data["SLG"], i)
                 home_lineup.append(player)
-
+                
         for i in range(1, 10):
             player_name = input(f"Enter the away team player {i} name: ")
             player_data = get_player_batting_stats(player_name)
             if player_data:
                 player = Player(player_data["Name"], player_data["AVG"], player_data["OBP"], player_data["SLG"], i)
                 away_lineup.append(player)
-
+                        
         home_pitcher_name = input("Enter the home team starting pitcher name: ")
         home_pitcher_data = get_pitcher_stats(home_pitcher_name)
-
+                        
         away_pitcher_name = input("Enter the away team starting pitcher name: ")
         away_pitcher_data = get_pitcher_stats(away_pitcher_name)
 
@@ -230,7 +230,7 @@ class Game:
 
         return home_team, away_team
 
-    def get_player_batting_stats(name):
+def get_player_batting_stats(name):
         """
     Fetches a player's batting statistics using the pybaseball library.
     
@@ -240,16 +240,16 @@ class Game:
     Returns:
         dict: A dictionary containing the player's batting statistics, or None if the player is not found.
     """
-        stats = batting_stats(2023)  # Replace with the desired year
-        player_stats = stats.loc[stats["Name"] == name]
-        
+        stats = batting_stats(2022)  # Replace with the desired year
+        player_stats = stats[stats["Name"] == name]
+            
         if not player_stats.empty:
             return player_stats.iloc[0].to_dict()
         else:
             print(f"Player {name} not found.")
             return None
 
-    def get_pitcher_stats(name):
+def get_pitcher_stats(name):
         """
     Fetches a pitcher's statistics using the pybaseball library.
     
@@ -259,9 +259,9 @@ class Game:
     Returns:
         dict: A dictionary containing the pitcher's statistics, or None if the pitcher is not found.
     """
-        stats = pitching_stats(2023)  # Replace with the desired year
+        stats = pitching_stats(2022)  # Replace with the desired year
         pitcher_stats = stats.loc[stats["Name"] == name]
-        
+            
         if not pitcher_stats.empty:
             return pitcher_stats.iloc[0].to_dict()
         else:
