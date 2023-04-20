@@ -43,3 +43,11 @@ If you'd like to contribute to this project, please feel free to fork the reposi
 
 ## License
 This project is licensed under the MIT License.
+## How to Run the Executable
+
+1. Download the compiled executable from the `dist` folder in this repository.
+   - For Windows users, download `main.exe`.
+   - For macOS/Linux users, download `main`.
+
+2. Run the downloaded executable file.
+
