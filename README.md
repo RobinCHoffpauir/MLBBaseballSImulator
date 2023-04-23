@@ -31,7 +31,7 @@ Follow the prompts to customize your simulation settings, such as selecting team
 
 Once the simulation is complete, view the results in the terminal or export them to a CSV file for further analysis.
 
-#@ Contributing
+## Contributing
 If you are interested in contributing to the project, please read the CONTRIBUTING.md file for guidelines on how to submit issues, suggest features, or create pull requests.
 
 License
